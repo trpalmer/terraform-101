@@ -9,7 +9,7 @@ def lambda_handler(event, context):
     if 'body' in event:
         event = json.loads(event['body'])
     
-    print(event, type(event))
+    # print(event, type(event))
 
     character = event.get('character', CHARACTER)
     message = event.get('message', '')

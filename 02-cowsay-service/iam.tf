@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "assume-role-policy" {
 }
 
 resource "aws_iam_role" "cowsay" {
-  name               = "${local.product_name}-role"
+  name_prefix        = "${local.product_name}-role"
   assume_role_policy = data.aws_iam_policy_document.assume-role-policy.json
   tags               = local.tags
 }
@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "allowall" {
 }
 
 resource "aws_iam_role_policy" "cowsay" {
-  name   = "${local.product_name}-policy"
-  role   = aws_iam_role.cowsay.name
-  policy = data.aws_iam_policy_document.allowall.json
+  name_prefix = "${local.product_name}-policy"
+  role        = aws_iam_role.cowsay.name
+  policy      = data.aws_iam_policy_document.allowall.json
 }
